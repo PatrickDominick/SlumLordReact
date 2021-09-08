@@ -9,6 +9,7 @@ export default class SignupForm extends Component {
 
         this.state = {
             username: "",
+            password: "",
             passwordConfirm: "",
             error: "",
             loading: false
@@ -45,7 +46,7 @@ export default class SignupForm extends Component {
               console.log(data);
     
               this.setState({ loading: false });
-                this.props.handleSetUser(this.state.username);
+                this.props.handleSetUser(data);
                 Cookies.set("username", this.state.username);
                 this.props.changeRoute("/rules"); 
             })
@@ -80,7 +81,7 @@ export default class SignupForm extends Component {
                 />
                 <input type="password" 
                 placeholder="Confirm Password"
-                name="passwordconfirm"
+                name="passwordConfirm"
                 value={this.state.passwordConfirm}
                 onChange={this.handleChange}
                 />
