@@ -1,0 +1,74 @@
+.game-wrapper{
+    @include page-styles;    
+    height: 100vh;
+    justify-content: center;
+    
+    .game-display-wrapper{
+        display: grid;
+        grid-template-columns: 3fr 1fr;  
+        gap: 50px; 
+        margin-bottom: 20px;
+        border: 2px solid blue;
+        border-radius: 10px;
+        padding: 20px;     
+        
+        .grid-wrapper{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            
+            img {
+                width: 99%;
+                height: 99%;
+            }
+            
+            .square {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        .display-wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .tokens-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .token {
+                    margin: 5px;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px solid black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 99%;
+                        height: 99%;
+                    }
+                }
+
+                .active {
+                    border: 2px solid yellow;
+                }
+            }
+
+            img {
+                height: 15px;
+                margin: 5px;
+            }
+        }
+
+    }   
+    button{
+        @include button-styles
+    }
+}

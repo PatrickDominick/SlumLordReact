@@ -2,10 +2,9 @@ import readBoard from "./readBoard"
 
 export default function generateBoard(user) {
     const boardData = []
-
     user.tokens.forEach(token => boardData.push(token.name))
 
-    for (let i=boardData.length; i<26; i++) {
+    for (let i=boardData.length; i<25; i++) {
         boardData.push("empty")
     }
 

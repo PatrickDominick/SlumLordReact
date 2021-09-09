@@ -10,7 +10,7 @@ export default function readBoard(board) {
 
     let earnings = 0
 
-    board.forEach(token => {
+    board.forEach((token, index) => {
         const adjacentTokens = getAdjacentTokens(index)
         switch(token) {
             case "Coin": 

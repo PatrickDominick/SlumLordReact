@@ -6,6 +6,7 @@ import Home from "./pages/home"
 import Signup from './pages/signup';
 import Rules from './pages/rules';
 import Game from "./pages/game";
+import Gameover from "./pages/gameover";
 
 export default class App extends Component {
   constructor() {
@@ -19,6 +20,7 @@ export default class App extends Component {
 
     this.handleSetUser = this.handleSetUser.bind(this)
     this.handleSetError = this.handleSetError.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
@@ -49,10 +51,15 @@ export default class App extends Component {
     this.setState({ error: errorData })
   }
 
+  handleLogout() {
+    Cookies.remove("username")
+    this.setState({ user: {} })
+  }
 
   render() {
     return (
       <div className='app'>
+        {this.state.user.id ? <button onClick={this.handleLogout}>Logout</button> : null}
         {this.state.loading 
         ?
         <h1>Loading...</h1>
@@ -62,7 +69,7 @@ export default class App extends Component {
           <Route path="/signup" render={props => <Signup {...props} handleSetUser={this.handleSetUser} />} />
           <Route path="/rules" render={props => <Rules {...props} user={this.state.user} handleSetUser={this.handleSetUser} handleSetError={this.handleSetError} />} />
           <Route path="/game" render={props => <Game {...props} user={this.state.user} handleSetUser={this.handleSetUser} />} />
-          <Route path="/gameover" component={() => <div>Gameover</div>} />
+          <Route path="/gameover" render={props => <Gameover {...props} user={this.state.user} handleSetUser={this.handleSetUser} handleSetError={this.handleSetError}/>} />
 
         </Switch>}
         <p>{this.state.error}</p>
